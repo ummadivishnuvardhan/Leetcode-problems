@@ -5,18 +5,20 @@ class Solution {
         helper(nums,l,0);
         return l;
     }
+    Set<List<Integer>> set=new HashSet<>();
     public void helper(int[] nums,List<List<Integer>> l,int index){
         if(index==nums.length-1){
              List<Integer> al=new ArrayList<>();
             for(int i=0;i<nums.length;i++){
                 al.add(nums[i]);
             }
-            if(l.contains(al)){
+            if(set.contains(al)){
                 return;
             }
             else{
            
             l.add(new ArrayList<>(al));
+            set.add(al);
             }
         }
         for(int i=index;i<nums.length;i++){
