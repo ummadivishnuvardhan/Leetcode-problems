@@ -28,20 +28,18 @@ class Solution {
         while(!q.isEmpty()){
             int level=q.size();
           
-            List<Integer> al=new ArrayList<>();
+               Double sum=0.0;
             for(int i=0;i<level;i++){
                 TreeNode curr=q.poll();
                 if(curr!=null){
-                al.add(curr.val);
+                sum+=curr.val;
                 if(curr.left!=null) q.offer(curr.left);
                 if(curr.right!=null) q.offer(curr.right);
                 }
             }
-            Double sum=0.0;
-            for(int i=0;i<al.size();i++){
-                sum+=al.get(i);
-            }
-            list.add(sum/al.size());
+         
+            
+            list.add(sum/level);
         }
     }
 }
