@@ -34,10 +34,10 @@ class Solution {
                 if(curr.left!=null) q.offer(curr.left);
                 if(curr.right!=null) q.offer(curr.right);
             } 
-            list.add(al);
+            list.add(0,al);
         }
       
-            Collections.reverse(list);
+            // Collections.reverse(list);
         
     }
 }
