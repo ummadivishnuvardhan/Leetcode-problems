@@ -15,25 +15,23 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        boolean res=bst(root);
-        return res;
+      
+     return bst(root,null,null);
+        
     }
-    public boolean bst(TreeNode root){
+    public boolean bst(TreeNode root,Integer low,Integer high){
         if(root==null){
-            return  false;
+            return  true;
         }
-        if(root.left!=null){
-            if(root.val>root.left.val){
-                bst(root.left);
-            }
-            else return false;
+        if(low!=null&&root.val<=low){
+            return false;
         }
-        if(root.right!=null){
-            if(root.val<root.right.val){
-                bst(root.right);
-            }
-            else return false;
+        if(high!=null&&root.val>=high){
+            return false;
         }
-        return true;
+        boolean left=bst(root.left,low,root.val);
+        boolean right=bst(root.right,root.val,high);
+        return left&&right;
+       
     }
 }
