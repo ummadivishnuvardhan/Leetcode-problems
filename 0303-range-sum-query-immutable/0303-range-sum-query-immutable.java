@@ -1,15 +1,15 @@
 class NumArray {
-    int arr[];
+    int prefix[];
     public NumArray(int[] nums) {
-        this.arr=nums;
+       this.prefix=nums;
+        prefix[0]=nums[0];
+        for(int i=1;i<nums.length;i++){
+            prefix[i]=nums[i]+prefix[i-1];
+        }
     }
     
     public int sumRange(int left, int right) {
-        int[] prefix=new int[arr.length];
-        prefix[0]=arr[0];
-        for(int i=1;i<arr.length;i++){
-            prefix[i]=arr[i]+prefix[i-1];
-        }
+        
         if(left==0){
             return prefix[right];
         }
