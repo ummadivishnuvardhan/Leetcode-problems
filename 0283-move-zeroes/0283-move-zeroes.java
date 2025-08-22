@@ -9,11 +9,7 @@ class Solution {
                 nums[j]=temp;
                 i++;
             }
-            else{
-                while(j<nums.length&&nums[j]==0){
-                    j++;
-                }
-            }
+            j++;
         }
     }
 }
