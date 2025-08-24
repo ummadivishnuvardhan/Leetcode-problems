@@ -1,8 +1,6 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        if(nums.length==1&&nums[0]==target){
-            return new int[]{0,0};
-        }
+       
         int[] arr={-1,-1};
         if(nums.length==0){
             return arr;
@@ -16,7 +14,7 @@ class Solution {
         
     }
     public int lb(int nums[],int target){
-        int ans=0;
+        int ans=nums.length;
         int low=0,high=nums.length-1;
         int mid=0;
         while(low<=high){
@@ -34,7 +32,7 @@ class Solution {
         return ans;
     }
      public int ub(int nums[],int target){
-        int ans=0;
+        int ans=nums.length;
         int low=0,high=nums.length-1;
         int mid=0;
         while(low<=high){
