@@ -16,13 +16,9 @@ class Solution {
                 return;
             }
         }
-
-        al.add(nums[count]);
-        subset(nums,res,al,count+1);
-        al.remove(al.size()-1);
-        //  while (count + 1 < nums.length && nums[count] == nums[count + 1]) {
-        //     count++;
-        // }
-        subset(nums,res,al,count+1);
+      al.add(nums[count]);
+      subset(nums,res,al,count+1);
+      al.remove(al.size()-1);
+      subset(nums,res,al,count+1);
     }
 }
