@@ -8,19 +8,20 @@ class Solution {
         return l;
     }
     public void helper(int[] nums,int target,List<List<Integer>> l,List<Integer> al,int count){
-      if(count==nums.length){
-        if(target==0){
-            l.add(new ArrayList<>(al));
+     
+        if(count==nums.length){
+            if(target==0){
+                l.add(new ArrayList<>(al));
+                return;
+            }
             return;
         }
-        return;
-      }
-        if(nums[count]<=target){
-            al.add(nums[count]);
-            helper(nums,target-nums[count],l,al,count);
-            al.remove(al.size()-1);
-       
-        }
-         helper(nums,target,l,al,count+1);
+     if(nums[count]<=target){
+        al.add(nums[count]);
+        helper(nums,target-nums[count],l,al,count);
+        al.remove(al.size()-1);
+     }
+     helper(nums,target,l,al,count+1);
+           
     }
 }
