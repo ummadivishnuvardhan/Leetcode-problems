@@ -19,29 +19,27 @@ class Solution {
         if(root==null){
             return list;
         }
-        
         Queue<TreeNode> q=new LinkedList<>();
-        bfs(list,root,q);
-        return list;
-
-    }
-    public void bfs(List<List<Integer>> list,TreeNode root,Queue<TreeNode> q){
-        
         q.offer(root);
+        return bfs(list,root,q);
+    }
+    public List<List<Integer>> bfs(List<List<Integer>> list,TreeNode root,Queue<TreeNode> q){
+        if(root==null){
+            return list;
+        }
         while(!q.isEmpty()){
             int level=q.size();
-           List<Integer> al=new ArrayList<>();
+            ArrayList<Integer> al=new ArrayList<>();
             for(int i=0;i<level;i++){
                 TreeNode curr=q.poll();
+                al.add(curr.val);
                 if(curr!=null){
-                    al.add(curr.val);
-                    if (curr.left != null) q.offer(curr.left);
-                    if (curr.right != null) q.offer(curr.right);
-
+                    if(curr.left!=null) q.offer(curr.left);
+                    if(curr.right!=null) q.offer(curr.right);
                 }
             }
-           list.add(al);
-          
+            list.add(al);
         }
+        return list;
     }
 }
