@@ -1,24 +1,18 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        Map<Integer,Integer> map=new HashMap<>();
-        int n=nums.length;
-        for(int i=0;i<n;i++){
-            if(!map.containsKey(nums[i])){
-                map.put(nums[i],1);
+       int majority=nums[0],votes=1;
+       for(int i=1;i<nums.length;i++){
+            if(votes==0){
+                votes++;
+                majority=nums[i];
+            }
+            else if(majority==nums[i]){
+                votes++;
             }
             else{
-                int count=map.get(nums[i]);
-                map.put(nums[i],count+1);
+                votes--;
             }
-        } 
-
-        int element=0;
-        for(int i=0;i<n;i++){
-            if(map.get(nums[i])>n/2){
-                element=nums[i];
-                break;
-            }
-        }
-        return element;
+       }
+       return majority;
     }
 }
