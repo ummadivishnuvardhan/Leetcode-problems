@@ -1,24 +1,21 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        if(s.isEmpty()){
-            return true;
-        }
-        s=s.toLowerCase();
+        s=s.toLowerCase().trim();
+        int start=0,end=s.length()-1;
         StringBuilder str=new StringBuilder();
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)>=97&&s.charAt(i)<=122||s.charAt(i)>='0'&&s.charAt(i)<='9'){
-                str.append(s.charAt(i));
+        for(int i=0;i<=end;i++){
+            char ch=s.charAt(i);
+            if(Character.isLetterOrDigit(ch)){
+                str.append(ch);
             }
         }
-        int left=0,right=str.length()-1;
-        while(left<=right){
-            if(str.charAt(left)==str.charAt(right)){
-                left++;
-                right--;
-            }
-            else{
+        end=str.length()-1;
+        while(start<end){
+            if(str.charAt(start)!=str.charAt(end)){
                 return false;
             }
+            start++;
+            end--;
         }
         return true;
     }
