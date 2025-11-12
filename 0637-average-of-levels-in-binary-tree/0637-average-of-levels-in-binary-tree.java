@@ -15,31 +15,28 @@
  */
 class Solution {
     public List<Double> averageOfLevels(TreeNode root) {
-        List<Double> list=new ArrayList<>();
+        List<Double> al=new ArrayList<>();
         if(root==null){
-            return list;
+            return al;
         }
         Queue<TreeNode> q=new LinkedList<>();
-        bfs(root,list,q);
-        return list;
+        return bfs(al,q,root);
     }
-    public void bfs(TreeNode root,List<Double> list,Queue<TreeNode> q){
+
+    public List<Double> bfs(List<Double> al,Queue<TreeNode> q,TreeNode root){
         q.offer(root);
         while(!q.isEmpty()){
             int level=q.size();
-          
-               Double sum=0.0;
+            long sum=0;
             for(int i=0;i<level;i++){
                 TreeNode curr=q.poll();
-                if(curr!=null){
                 sum+=curr.val;
                 if(curr.left!=null) q.offer(curr.left);
                 if(curr.right!=null) q.offer(curr.right);
-                }
             }
-         
-            
-            list.add(sum/level);
+            double avg=(double)sum/level;
+            al.add(avg);
         }
+        return al;
     }
 }
