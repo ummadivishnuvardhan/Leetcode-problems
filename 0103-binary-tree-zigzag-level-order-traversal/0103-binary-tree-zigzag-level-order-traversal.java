@@ -20,46 +20,28 @@ class Solution {
             return list;
         }
         Deque<TreeNode> q=new ArrayDeque<>();
-        bfs(list,root,q);
-        return list;
+        
+        return bfs(list,root,q);
     }
-    public void bfs(List<List<Integer>> list,TreeNode root,Deque<TreeNode> q){
+    public List<List<Integer>> bfs(List<List<Integer>> list,TreeNode root,Deque<TreeNode> q){
+        int temp=0;
         q.offer(root);
-       boolean res=false;
         while(!q.isEmpty()){
-            
             int level=q.size();
             List<Integer> al=new ArrayList<>();
-
             for(int i=0;i<level;i++){
-                
-                if(res){
-                    TreeNode curr=q.removeFirst();
-                    if(curr!=null){
-                        al.add(curr.val);
-                        if(curr.right!=null) q.addLast(curr.right);
-                        if(curr.left!=null) q.addLast(curr.left);
-                    
-                    }
-                }
-                else{
-                    TreeNode curr=q.removeLast();
-                    if(curr!=null){
-                        al.add(curr.val);     
-                       
-                         if(curr.left!=null) q.addFirst(curr.left);
-                        if(curr.right!=null) q.addFirst(curr.right);
-                    
-                    }
-                }
-           
-              
+                TreeNode curr=q.poll();
+                al.add(curr.val);
+                if(curr.left!=null) q.offer(curr.left);
+                if(curr.right!=null) q.offer(curr.right);
             }
-             res=!res;
+            if(temp%2==1){
+                Collections.reverse(al);
+            }
             list.add(al);
-          
-           
+            temp=temp+1;
         }
+        return list;
     }
  
 }
