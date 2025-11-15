@@ -15,26 +15,28 @@
  */
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
-        
-        List<Integer> list=new ArrayList<>();
-        if(root==null) return list;
+        List<Integer> al=new ArrayList<>();
+        if(root==null) return al;
         Queue<TreeNode> q=new LinkedList<>();
-        bfs(list,q,root);
-        return list;
+      
+        return bfs(al,q,root);   
     }
-    public void bfs(List<Integer> list,Queue<TreeNode> q,TreeNode root){
-        q.offer(root);
+
+    public List<Integer> bfs( List<Integer> al,Queue<TreeNode> q,TreeNode root){
+          q.offer(root);
         while(!q.isEmpty()){
             int level=q.size();
-           
             for(int i=0;i<level;i++){
-                 TreeNode curr=q.poll();
-                 if(i==level-1){
-                    list.add(curr.val);
-                 }
-                 if(curr.left!=null) q.offer(curr.left);
-                 if(curr.right!=null) q.offer(curr.right);
+                TreeNode curr=q.poll();
+               
+                    if(i==level-1){
+                    al.add(curr.val);
+                
+                }
+                if(curr.left!=null)q.offer(curr.left);
+                if(curr.right!=null)q.offer(curr.right);
             }
         }
+        return al;
     }
 }
