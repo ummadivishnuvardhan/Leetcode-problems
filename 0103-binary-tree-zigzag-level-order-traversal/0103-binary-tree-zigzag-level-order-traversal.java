@@ -19,11 +19,11 @@ class Solution {
         if(root==null){
             return list;
         }
-        Deque<TreeNode> q=new ArrayDeque<>();
+        Queue<TreeNode> q=new LinkedList<>();
         
         return bfs(list,root,q);
     }
-    public List<List<Integer>> bfs(List<List<Integer>> list,TreeNode root,Deque<TreeNode> q){
+    public List<List<Integer>> bfs(List<List<Integer>> list,TreeNode root,Queue<TreeNode> q){
         int temp=0;
         q.offer(root);
         while(!q.isEmpty()){
