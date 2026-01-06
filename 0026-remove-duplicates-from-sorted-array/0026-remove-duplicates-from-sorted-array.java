@@ -1,18 +1,16 @@
 class Solution {
-    public int removeDuplicates(int[] nums) {
-        if(nums.length<2){
-            return nums.length; 
+    public int removeDuplicates(int[] a) {
+        if(a.length<2){
+            return a.length; 
         }
-        int start=0,end=1;
-        while(end<nums.length){
-            if(nums[start]!=nums[end]){
-                start++;
-                nums[start]=nums[end];
+       int l=0,r=1;
+       while(r<a.length){
+            if(a[l]!=a[r]){
+                l++;
+                a[l]=a[r];
             }
-            else{
-                end++;
-            }
-        }
-        return start+1;
+            r++;
+       }
+       return l+1;
     }
 }
