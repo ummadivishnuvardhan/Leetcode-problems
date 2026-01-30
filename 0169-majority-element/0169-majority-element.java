@@ -1,18 +1,18 @@
 class Solution {
-    public int majorityElement(int[] nums) {
-       int majority=nums[0],votes=1;
-       for(int i=1;i<nums.length;i++){
-            if(votes==0){
-                votes++;
-                majority=nums[i];
-            }
-            else if(majority==nums[i]){
-                votes++;
+    public int majorityElement(int[] arr) {
+        int c=1,maj=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(c==0){
+                maj=arr[i];
+                c++;
+            } 
+            else if(arr[i]==maj){
+                c++;
             }
             else{
-                votes--;
+                c--;
             }
-       }
-       return majority;
+        }
+        return maj;
     }
 }
