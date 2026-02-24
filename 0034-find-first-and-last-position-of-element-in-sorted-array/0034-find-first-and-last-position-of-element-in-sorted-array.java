@@ -1,52 +1,36 @@
 class Solution {
-    public int[] searchRange(int[] nums, int target) {
-       
-        int[] arr={-1,-1};
-        if(nums.length==0){
-            return arr;
-        }
-        int lowb=lb(nums,target);
-        if(lowb==nums.length||nums[lowb]!=target) return arr;
-        arr[0]=lowb;
-        
-        arr[1]=ub(nums,target)-1;
-        return arr;
-        
-    }
-    public int lb(int nums[],int target){
-        int ans=nums.length;
-        int low=0,high=nums.length-1;
-        int mid=0;
+    public int[] searchRange(int[] arr, int tar) {
+      int[] res={-1,-1};
+     
+        int low=0,high=arr.length-1;
         while(low<=high){
-            mid=(low+high)/2;
-            if(nums[mid]>=target){
-                ans=mid;
-                  high=mid-1;
-                
+            int mid=(low+high)/2;
+            if(arr[mid]==tar){
+                res[0]=mid;
+                high=mid-1;
+            }
+            else if(tar<arr[mid]){
+                high=mid-1;
             }
             else{
-              low=mid+1;
+                low=mid+1;
             }
         }
-
-        return ans;
-    }
-     public int ub(int nums[],int target){
-        int ans=nums.length;
-        int low=0,high=nums.length-1;
-        int mid=0;
+        low=0;
+        high=arr.length-1;
         while(low<=high){
-            mid=(low+high)/2;
-            if(nums[mid]>target){
-                ans=mid;
-                  high=mid-1;
-                
+            int mid=(low+high)/2;
+            if(arr[mid]==tar){
+                res[1]=mid;
+                low=mid+1;
+            }
+            else if(tar<arr[mid]){
+                high=mid-1;
             }
             else{
-              low=mid+1;
+                low=mid+1;
             }
         }
-
-        return ans;
+        return res;
     }
 }
